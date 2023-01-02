@@ -90,6 +90,7 @@ public class CharacterMovement : MonoBehaviour
 	   {
         particles.Stop();
 
+
         if (Input.GetMouseButtonDown(0))
         {
            
@@ -98,12 +99,8 @@ public class CharacterMovement : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
 		{
-            particles.Play();
-        }
-        else
-		{
             particles.Stop();
-
         }
+       
     }
     }
