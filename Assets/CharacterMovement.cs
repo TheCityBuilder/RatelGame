@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
                 Jump();     
             } 
           }
-        fart();
+            fart();
          }
 
         void Jump()
@@ -92,11 +92,16 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+           
             particles.Play();
-            }
+
+        }
         else if (Input.GetMouseButtonUp(0))
-        {
+		{
+            particles.Play();
+        }
+        else
+		{
             particles.Stop();
 
         }
