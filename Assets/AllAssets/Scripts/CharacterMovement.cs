@@ -47,18 +47,12 @@ public class CharacterMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal"); // transfer this into update
 
         switch (horizontal)
         {
             case 1:
-                rt.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                particles.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-                horizontal = Input.GetAxisRaw("Horizontal");
-                rt.velocity = new Vector3(horizontal * speed, rt.velocity.y, 0);
-                rx.SetFloat("Speed", 1);
-                rx.SetBool("Ajump", false);
+                MoveCharacterX(0);
                 break;
             case 0:
                 rt.velocity = new Vector2(0, rt.velocity.y);
@@ -66,16 +60,22 @@ public class CharacterMovement : MonoBehaviour
                 rx.SetBool("Ajump", false);
                 break;
             case -1:
-                rt.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                particles.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
-                horizontal = Input.GetAxisRaw("Horizontal");
-                rt.velocity = new Vector3(horizontal * speed, rt.velocity.y, 0);
-                rx.SetFloat("Speed", 1);
-                rx.SetBool("Ajump", false);
+                MoveCharacterX(180f);
                 break;
         }
-    }   
+    }
+
+    private void MoveCharacterX(float directionX)
+    {
+        rt.transform.rotation = Quaternion.Euler(0f, directionX, 0f);
+        particles.transform.rotation = Quaternion.Euler(0f, directionX, 0f);
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+        rt.velocity = new Vector3(horizontal * speed, rt.velocity.y, 0);
+        rx.SetFloat("Speed", 1);
+        rx.SetBool("Ajump", false);
+    }
+    
     void OnCollisionEnter2D(Collision2D collision) // adjust this
     {
         if (collision.gameObject.tag != "isGround") return;
