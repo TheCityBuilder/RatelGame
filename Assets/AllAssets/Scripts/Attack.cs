@@ -17,22 +17,23 @@ public class Attack : MonoBehaviour
         }
     }
 
-        void Attacks()
-	    {
+    void Attacks()
+    {
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-            particles.Play();
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        particles.Play();
         
-            foreach (Collider2D enemy in hitEnemies)
-            {
+        foreach (Collider2D enemy in hitEnemies)
+        {
             enemy.GetComponent<Enemy>().TakeDamage(20);
-            }
-            
         }
+            
+    }
+        
         void OnDrawGizmosSelected()
         {
-        if (attackPoint == null)
-            return;
+            if (attackPoint == null)
+                return;
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
 }

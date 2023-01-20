@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: indir
+  m_Name: texture1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 193a6184d8d502e4789046ba80815653, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ac710c726c41ba4ca7a7fc57cb358d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
