@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public ParticleSystem particles;
+    [SerializeField] private ParticleSystem particles;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    void Update()
+    
+    private void Update()
     {
-        ParticleSystem particles = GetComponent<ParticleSystem>();
         if (Input.GetMouseButtonDown(0))
         {
             Attacks();
         }
     }
 
-    void Attacks()
+    private void Attacks()
     {
-
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         particles.Play();
         
@@ -27,13 +24,11 @@ public class Attack : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(20);
         }
-            
     }
         
-        void OnDrawGizmosSelected()
-        {
-            if (attackPoint == null)
-                return;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }
