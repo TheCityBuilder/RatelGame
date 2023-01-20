@@ -3,24 +3,20 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
-    int currentHealth;
-    public GameObject Enemies;
-    void Start()
-    {
-        GameObject Enemies = GetComponent<GameObject>();
-        currentHealth = maxHealth;
-        
-    }
+    private int currentHealth;
+    [SerializeField] private GameObject enemies;
     
+    private void Start()
+    {
+	    currentHealth = maxHealth;
+    }
     public void TakeDamage(int damage)
 	{
         currentHealth -= damage;
 		if (currentHealth <= 0)
 		{
-            Destroy(Enemies);
+            Destroy(enemies);
 		}
-
-
 	}
     
 }
